@@ -4,16 +4,16 @@
 
 <title>NASM Tutorial</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="./NASM Tutorial_files/default.css">
-<link rel="stylesheet" type="text/css" href="./NASM Tutorial_files/prettify.css">
-<link href="./NASM Tutorial_files/css" rel="stylesheet">
-<script src="./NASM Tutorial_files/prettify.js"></script>
+<link rel="stylesheet" type="text/css" href="./index_files/default.css">
+<link rel="stylesheet" type="text/css" href="./index_files/prettify.css">
+<link href="./index_files/css" rel="stylesheet">
+<script src="./index_files/prettify.js"></script>
 </head>
   <body class="coursenotes">
     <script>onload = function () {prettyPrint();}</script>
     <div class="container">
       <div class="innercontent">
-        <section class="notetitle"><h1>NASM Tutorial</h1><img src="./NASM Tutorial_files/nasm-logo.png"></section>
+        <section class="notetitle"><h1>NASM Tutorial</h1><img src="./index_files/nasm-logo.png"></section>
 <div class="abstract">Yep, it’s a tutorial.</div><div id="contents"><div>CONTENTS</div><div>Scope of the Tutorial • Your First Program • Structure of a NASM Program • Details • Your First Few Instructions • The Three Kinds of Operands • Instructions with two memory operands are extremely rare • Defining Data and Reserving Space • Another Example • Using a C Library • Understanding Calling Conventions • Mixing C and Assembly Language • Conditional Instructions • Command Line Arguments • A Longer Example • Floating Point Instructions • Data Sections • Recursion • SIMD Parallelism • Saturated Arithmetic • Graphics • Local Variables and Stack Frames • Using NASM on macOS • Using NASM on Windows</div></div>
 
 <h2>Scope of the Tutorial</h2>
@@ -50,7 +50,7 @@ Hello, World
 
 <p>NASM is line-based. Most programs consist of <dfn>directives</dfn> followed by one or more <dfn>sections</dfn>. Lines can have an optional <dfn>label</dfn>. Most lines have an <dfn>instruction</dfn> followed by zero or more <dfn>operands</dfn>.
 
-</p><p><img src="./NASM Tutorial_files/nasmstructure.png" alt="nasmstructure.png"></p>
+</p><p><img src="./index_files/nasmstructure.png" alt="nasmstructure.png"></p>
 <p>Generally, you put code in a section called <code>.text</code> and your constant data in a section called <code>.data</code>.
 
 </p><h2>Details</h2>
@@ -111,7 +111,7 @@ AL  CL  DL  BL  SPL BPL SIL DIL
 
 <p>Study this picture; hopefully it helps:
 
-</p><p><img src="./NASM Tutorial_files/rdx.png" alt="rdx.png"></p>
+</p><p><img src="./index_files/rdx.png" alt="rdx.png"></p>
 <h3>Memory Operands</h3>
 
 <p>These are the basic forms of addressing:
@@ -695,7 +695,7 @@ $ <kbd>nasm -fmacho64 average.asm &amp;&amp; gcc average.o &amp;&amp; ./a.out 54
 </p><div class="filename"><span>hello.asm</span></div><pre class="prettyprint lang-asm"><span class="com">; ----------------------------------------------------------------------------------------</span><span class="pln"><br></span><span class="com">; This is a Win64 console program that writes "Hello" on one line and then exits. &nbsp;It</span><span class="pln"><br></span><span class="com">; uses puts from the C library. &nbsp;To assemble and run:</span><span class="pln"><br></span><span class="com">;</span><span class="pln"><br></span><span class="com">; &nbsp; &nbsp; nasm -fwin64 hello.asm &amp;&amp; gcc hello.obj &amp;&amp; a</span><span class="pln"><br></span><span class="com">; ----------------------------------------------------------------------------------------</span><span class="pln"><br><br>&nbsp; &nbsp; &nbsp; &nbsp; global &nbsp;main<br>&nbsp; &nbsp; &nbsp; &nbsp; extern &nbsp;puts<br>&nbsp; &nbsp; &nbsp; &nbsp; section .text<br>main:<br>&nbsp; &nbsp; &nbsp; &nbsp; sub &nbsp; &nbsp; </span><span class="kwd">rsp</span><span class="pln">, 28h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="com">; Reserve the shadow space</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; mov &nbsp; &nbsp; </span><span class="kwd">rcx</span><span class="pln">, message &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="com">; First argument is address of message</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; call &nbsp; &nbsp;puts &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="com">; puts(message)</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; add &nbsp; &nbsp; </span><span class="kwd">rsp</span><span class="pln">, 28h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="com">; Remove shadow space</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; ret<br>message:<br>&nbsp; &nbsp; &nbsp; &nbsp; db &nbsp; &nbsp; &nbsp;'Hello', 0 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="com">; C strings need a zero byte at the end</span></pre>
 <p>Did you notice we actually reserved 40 bytes? Thirty-two bytes of shadow space is a minimum requirement. In our <code>main</code> function, we are calling another function, so our stack <a href="https://docs.microsoft.com/en-us/cpp/build/stack-usage">must be aligned on a 16-byte boundary</a>. When <code>main</code> is called, the return address (8 bytes) was pushed, so we have to “add” an extra 8 bytes to the shadow space.</p>
 
-<script src="./NASM Tutorial_files/lang-asm.js"></script>
+<script src="./index_files/lang-asm.js"></script>
       </div>
     </div>
     <script>
