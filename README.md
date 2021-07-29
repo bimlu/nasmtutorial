@@ -9,3 +9,4 @@
 #### Review of x86 assembly: http://www.scs.stanford.edu/nyu/04fa/notes/l2.pdf
 #### x86 calling conventions: https://en.wikipedia.org/wiki/X86_calling_conventions#x86-64_Calling_Conventions
 #### Differences in Intel (NASM) vs AT&T (GAS) Syntax. https://sdasgup3.github.io/Intel_Vs_Att_format/
+#### Linux assemblers: A comparison of GAS and NASM. https://developer.ibm.com/articles/l-gas-nasm/
