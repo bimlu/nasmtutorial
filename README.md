@@ -11,3 +11,5 @@
 #### Differences in Intel (NASM) vs AT&T (GAS) Syntax. https://sdasgup3.github.io/Intel_Vs_Att_format/
 #### Linux assemblers: A comparison of GAS and NASM. https://developer.ibm.com/articles/l-gas-nasm/
 #### Floating Point Instructions. http://rayseyfarth.com/asm/pdf/ch11-floating-point.pdf
+#### Where the top of the stack is on x86. https://eli.thegreenplace.net/2011/02/04/where-the-top-of-the-stack-is-on-x86/
+#### Stack frame layout on x86-64. https://eli.thegreenplace.net/2011/09/06/stack-frame-layout-on-x86-64/
